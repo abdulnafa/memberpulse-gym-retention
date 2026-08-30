@@ -2,6 +2,8 @@
 
 A polished, responsive product trial for a gym member-retention workspace. The concept helps gym owners find at-risk members early, prioritize follow-ups, and turn expiring memberships into simple renewal conversations.
 
+**Live demo:** https://abdulnafa.github.io/memberpulse-gym-retention/
+
 ## Included screens
 
 1. **Retention overview** — live KPIs, attendance trends, renewal progress, priority follow-ups, and daily actions.
