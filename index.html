@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MemberPulse — a member retention workspace for modern gyms.">
+  <meta name="theme-color" content="#14211d">
+  <title>MemberPulse — Retention Workspace</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="icon-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.2-6 4.1 12 2.2-6H21"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68h.08A1.65 1.65 0 0 0 10 3.17V3a2 2 0 1 1 4 0v.09A1.65 1.65 0 0 0 15 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.32 9v.08A1.65 1.65 0 0 0 20.83 10H21a2 2 0 1 1 0 4h-.09A1.65 1.65 0 0 0 19.4 15z"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="icon-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="icon-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.3-4.7A8.5 8.5 0 1 1 20.5 11.7z"/><path d="M8.2 7.8c.4 3.8 2.3 5.7 6.1 6.1M8.2 7.8l1.5-.7 1.2 2.5-1 .8m4.4 3.5.8-1 2.5 1.2-.7 1.5"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="icon-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3"/></symbol>
+    <symbol id="icon-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 3 1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5zM19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-row">
+        <div class="brand-mark"><span></span><span></span><span></span></div>
+        <span class="brand-name">member<span>pulse</span></span>
+        <button class="icon-button sidebar-close" id="sidebarClose" aria-label="Close navigation"><svg><use href="#icon-x"/></svg></button>
+      </div>
+
+      <button class="location-switcher" type="button">
+        <span class="location-logo">AF</span>
+        <span><small>Workspace</small><strong>Apex Fitness</strong></span>
+        <svg><use href="#icon-arrow-down"/></svg>
+      </button>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <p class="nav-label">Workspace</p>
+        <button class="nav-item active" data-view="dashboard" type="button"><svg><use href="#icon-grid"/></svg><span>Overview</span></button>
+        <button class="nav-item" data-view="members" type="button"><svg><use href="#icon-users"/></svg><span>Members</span><span class="nav-count">1,284</span></button>
+        <button class="nav-item" data-view="profile" type="button"><svg><use href="#icon-pulse"/></svg><span>Member 360</span></button>
+
+        <p class="nav-label nav-label-spaced">Manage</p>
+        <button class="nav-item muted" type="button"><svg><use href="#icon-calendar"/></svg><span>Renewals</span><span class="nav-dot"></span></button>
+        <button class="nav-item muted" type="button"><svg><use href="#icon-message"/></svg><span>Campaigns</span></button>
+        <button class="nav-item muted" type="button"><svg><use href="#icon-chart"/></svg><span>Reports</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-insight">
+          <span class="insight-icon"><svg><use href="#icon-spark"/></svg></span>
+          <div><strong>Retention is up 2.4%</strong><p>Your follow-ups saved 8 memberships this month.</p></div>
+        </div>
+        <button class="nav-item muted settings-link" type="button"><svg><use href="#icon-settings"/></svg><span>Settings</span></button>
+        <div class="sidebar-user">
+          <span class="avatar avatar-jordan">JD</span>
+          <span><strong>Jordan Davis</strong><small>Gym owner</small></span>
+          <svg><use href="#icon-dots"/></svg>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Open navigation"><svg><use href="#icon-menu"/></svg></button>
+        <div class="topbar-location"><span class="status-dot"></span><span>Apex Fitness</span><span class="separator">/</span><strong>Downtown</strong></div>
+        <div class="topbar-actions">
+          <button class="global-search" type="button"><svg><use href="#icon-search"/></svg><span>Search members...</span><kbd>⌘ K</kbd></button>
+          <button class="icon-button notification-button" type="button" aria-label="Notifications"><svg><use href="#icon-bell"/></svg><span></span></button>
+          <span class="topbar-avatar avatar avatar-jordan">JD</span>
+        </div>
+      </header>
+
+      <div class="view-container">
+        <!-- SCREEN 1: RETENTION OVERVIEW -->
+        <section class="app-view active" id="dashboard-view" data-screen="dashboard">
+          <div class="page-heading">
+            <div><p class="eyebrow">SUNDAY, AUGUST 30</p><h1>Good morning, Jordan.</h1><p class="page-subtitle">Here’s where your members need attention today.</p></div>
+            <div class="heading-actions"><button class="button button-secondary" type="button"><svg><use href="#icon-download"/></svg>Export report</button><button class="button button-primary" data-action="add-member" type="button"><svg><use href="#icon-plus"/></svg>Add member</button></div>
+          </div>
+
+          <div class="daily-brief">
+            <span class="brief-badge"><svg><use href="#icon-spark"/></svg>Daily brief</span>
+            <p><strong>7 renewals are due this week.</strong> Reaching out today could protect <strong>$1,243</strong> in monthly revenue.</p>
+            <button data-go-members="expiring" type="button">Review members <svg><use href="#icon-chevron"/></svg></button>
+          </div>
+
+          <div class="metric-grid">
+            <button class="metric-card" data-go-members="all" type="button">
+              <span class="metric-icon mint"><svg><use href="#icon-users"/></svg></span>
+              <span class="metric-top"><span>Active members</span><span class="trend positive"><svg><use href="#icon-arrow-up"/></svg>3.8%</span></span>
+              <strong>1,284</strong><small>47 joined this month</small>
+            </button>
+            <button class="metric-card" data-go-members="all" type="button">
+              <span class="metric-icon blue"><svg><use href="#icon-pulse"/></svg></span>
+              <span class="metric-top"><span>Retention rate</span><span class="trend positive"><svg><use href="#icon-arrow-up"/></svg>2.4%</span></span>
+              <strong>91.6%</strong><small>Goal: 93% by September</small>
+            </button>
+            <button class="metric-card" data-go-members="risk" type="button">
+              <span class="metric-icon amber"><svg><use href="#icon-clock"/></svg></span>
+              <span class="metric-top"><span>Members at risk</span><span class="metric-note">Needs attention</span></span>
+              <strong>27</strong><small>8 moved to high risk this week</small>
+            </button>
+            <button class="metric-card" data-go-members="overdue" type="button">
+              <span class="metric-icon coral"><svg><use href="#icon-chart"/></svg></span>
+              <span class="metric-top"><span>Revenue at risk</span><span class="trend negative"><svg><use href="#icon-arrow-up"/></svg>12.1%</span></span>
+              <strong>$8,460</strong><small>Across 36 memberships</small>
+            </button>
+          </div>
+
+          <div class="dashboard-grid primary-grid">
+            <article class="panel trend-panel">
+              <div class="panel-heading">
+                <div><h2>Member activity</h2><p>Weekly check-ins across active members</p></div>
+                <div class="segmented-control chart-range" role="group" aria-label="Chart range"><button data-range="4" type="button">4W</button><button class="active" data-range="12" type="button">12W</button><button data-range="26" type="button">6M</button></div>
+              </div>
+              <div class="chart-summary"><strong id="checkinsValue">3,842</strong><span>check-ins</span><span class="trend positive"><svg><use href="#icon-arrow-up"/></svg><span id="checkinsTrend">6.2%</span></span><small>vs previous period</small></div>
+              <div class="line-chart" id="activityChart">
+                <div class="chart-y-labels"><span>4.5k</span><span>3k</span><span>1.5k</span><span>0</span></div>
+                <svg viewBox="0 0 760 230" preserveAspectRatio="none" role="img" aria-label="Weekly member check-ins trending upward">
+                  <defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78d7a5" stop-opacity=".28"/><stop offset="1" stop-color="#78d7a5" stop-opacity="0"/></linearGradient></defs>
+                  <g class="grid-lines"><path d="M0 18H760M0 82H760M0 146H760M0 210H760"/></g>
+                  <path class="chart-area" d="M0 173 C36 166 49 146 86 151 S137 169 174 145 S224 121 260 133 S311 146 348 119 S398 97 435 109 S485 123 522 92 S573 72 609 83 S659 96 696 62 S733 48 760 34 L760 230 L0 230Z"/>
+                  <path class="chart-line" d="M0 173 C36 166 49 146 86 151 S137 169 174 145 S224 121 260 133 S311 146 348 119 S398 97 435 109 S485 123 522 92 S573 72 609 83 S659 96 696 62 S733 48 760 34"/>
+                  <g class="chart-points"><circle cx="0" cy="173" r="4"/><circle cx="86" cy="151" r="4"/><circle cx="174" cy="145" r="4"/><circle cx="260" cy="133" r="4"/><circle cx="348" cy="119" r="4"/><circle cx="435" cy="109" r="4"/><circle cx="522" cy="92" r="4"/><circle cx="609" cy="83" r="4"/><circle cx="696" cy="62" r="4"/><circle cx="760" cy="34" r="4"/></g>
+                </svg>
+                <div class="chart-tooltip"><strong>3,842 check-ins</strong><span>Aug 24–30</span></div>
+                <div class="chart-x-labels"><span>Jun 8</span><span>Jun 22</span><span>Jul 6</span><span>Jul 20</span><span>Aug 3</span><span>Aug 17</span><span>Aug 30</span></div>
+              </div>
+            </article>
+
+            <article class="panel renewals-panel">
+              <div class="panel-heading"><div><h2>August renewals</h2><p>38 memberships due</p></div><button class="text-button" data-go-members="expiring" type="button">View all</button></div>
+              <div class="renewal-ring-wrap">
+                <div class="renewal-ring"><span><strong>58%</strong><small>renewed</small></span></div>
+                <div class="renewal-legend">
+                  <div><span class="legend-dot green"></span><p><strong>22</strong><small>Renewed</small></p><b>$3,142</b></div>
+                  <div><span class="legend-dot amber"></span><p><strong>9</strong><small>Pending</small></p><b>$1,226</b></div>
+                  <div><span class="legend-dot red"></span><p><strong>7</strong><small>Overdue</small></p><b>$846</b></div>
+                </div>
+              </div>
+              <div class="renewal-footer"><span><svg><use href="#icon-spark"/></svg></span><p><strong>4 members likely to renew</strong><small>Send a reminder before 5 PM today.</small></p><button data-action="send-bulk" type="button">Send</button></div>
+            </article>
+          </div>
+
+          <div class="dashboard-grid secondary-grid">
+            <article class="panel followup-panel">
+              <div class="panel-heading"><div><h2>Priority follow-ups</h2><p>Members ranked by urgency and value</p></div><button class="text-button" data-go-members="risk" type="button">View all</button></div>
+              <div class="followup-list">
+                <button class="followup-row" data-open-profile type="button">
+                  <span class="avatar avatar-nina">NP</span><span class="member-cell"><strong>Nina Patel</strong><small>No visit in 19 days · Expires Sep 3</small></span><span class="risk-pill high"><i></i>84 High</span><span class="value-cell"><strong>$59</strong><small>monthly</small></span><span class="row-action"><svg><use href="#icon-chevron"/></svg></span>
+                </button>
+                <button class="followup-row" data-member-name="Marcus Lee" type="button">
+                  <span class="avatar avatar-marcus">ML</span><span class="member-cell"><strong>Marcus Lee</strong><small>Payment overdue · 12 days inactive</small></span><span class="risk-pill high"><i></i>78 High</span><span class="value-cell"><strong>$89</strong><small>monthly</small></span><span class="row-action"><svg><use href="#icon-chevron"/></svg></span>
+                </button>
+                <button class="followup-row" data-member-name="Sofia Reed" type="button">
+                  <span class="avatar avatar-sofia">SR</span><span class="member-cell"><strong>Sofia Reed</strong><small>Attendance down 64% · Expires Sep 12</small></span><span class="risk-pill medium"><i></i>61 Medium</span><span class="value-cell"><strong>$799</strong><small>annual</small></span><span class="row-action"><svg><use href="#icon-chevron"/></svg></span>
+                </button>
+              </div>
+            </article>
+
+            <article class="panel actions-panel">
+              <div class="panel-heading"><div><h2>Today’s actions</h2><p>Sunday, August 30</p></div><span class="action-total">20 total</span></div>
+              <div class="action-progress"><span style="--width: 40%"></span></div>
+              <p class="progress-caption"><strong>8 completed</strong><span>12 remaining</span></p>
+              <div class="action-list">
+                <button data-go-members="expiring" type="button"><span class="action-icon amber"><svg><use href="#icon-bell"/></svg></span><span><strong>Renewal reminders</strong><small>12 members due</small></span><b>12</b><svg><use href="#icon-chevron"/></svg></button>
+                <button data-action="callbacks" type="button"><span class="action-icon blue"><svg><use href="#icon-phone"/></svg></span><span><strong>Scheduled callbacks</strong><small>Next at 11:30 AM</small></span><b>5</b><svg><use href="#icon-chevron"/></svg></button>
+                <button data-action="unopened" type="button"><span class="action-icon coral"><svg><use href="#icon-link"/></svg></span><span><strong>Unopened renewal links</strong><small>Sent 48+ hours ago</small></span><b>3</b><svg><use href="#icon-chevron"/></svg></button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- SCREEN 2: MEMBERS & RISK -->
+        <section class="app-view" id="members-view" data-screen="members">
+          <div class="page-heading members-heading">
+            <div><p class="eyebrow">MEMBER DIRECTORY</p><h1>Members</h1><p class="page-subtitle">Understand risk, follow up on time, and keep members moving.</p></div>
+            <div class="heading-actions"><button class="button button-secondary" type="button"><svg><use href="#icon-download"/></svg>Export</button><button class="button button-primary" data-action="add-member" type="button"><svg><use href="#icon-plus"/></svg>Add member</button></div>
+          </div>
+
+          <div class="member-summary-strip">
+            <button data-filter="risk" type="button"><span class="summary-icon coral"><svg><use href="#icon-pulse"/></svg></span><span><strong>27</strong><small>High risk</small></span><b>+8 this week</b></button>
+            <button data-filter="expiring" type="button"><span class="summary-icon amber"><svg><use href="#icon-calendar"/></svg></span><span><strong>18</strong><small>Expiring in 14 days</small></span><b>$2,410 value</b></button>
+            <button data-filter="inactive" type="button"><span class="summary-icon violet"><svg><use href="#icon-clock"/></svg></span><span><strong>11</strong><small>Inactive 14+ days</small></span><b>Needs follow-up</b></button>
+            <button data-filter="overdue" type="button"><span class="summary-icon blue"><svg><use href="#icon-card"/></svg></span><span><strong>7</strong><small>Payment overdue</small></span><b>$846 due</b></button>
+          </div>
+
+          <article class="panel members-panel">
+            <div class="member-tabs" role="tablist" aria-label="Member filters">
+              <button class="active" data-filter="all" role="tab" type="button">All members <span>1,284</span></button>
+              <button data-filter="risk" role="tab" type="button">High risk <span>27</span></button>
+              <button data-filter="inactive" role="tab" type="button">Inactive <span>11</span></button>
+              <button data-filter="expiring" role="tab" type="button">Expiring soon <span>18</span></button>
+              <button data-filter="overdue" role="tab" type="button">Overdue <span>7</span></button>
+            </div>
+            <div class="table-toolbar">
+              <label class="table-search"><svg><use href="#icon-search"/></svg><input id="memberSearch" type="search" placeholder="Search by name, email, or plan" autocomplete="off"></label>
+              <div class="toolbar-actions">
+                <button class="filter-button" id="sortButton" type="button"><svg><use href="#icon-filter"/></svg>Risk: High to low<svg class="small-chevron"><use href="#icon-arrow-down"/></svg></button>
+                <button class="filter-button" id="filterButton" type="button"><svg><use href="#icon-filter"/></svg>More filters</button>
+              </div>
+            </div>
+
+            <div class="bulk-bar" id="bulkBar"><span><strong id="selectedCount">0</strong> members selected</span><button data-action="send-bulk" type="button"><svg><use href="#icon-message"/></svg>Send follow-up</button><button id="clearSelection" type="button">Clear</button></div>
+
+            <div class="member-table-wrap">
+              <table class="member-table">
+                <thead><tr><th class="check-column"><label class="checkbox"><input id="selectAll" type="checkbox"><span><svg><use href="#icon-check"/></svg></span></label></th><th>Member</th><th>Plan</th><th>Last visit</th><th>Membership ends</th><th><button class="sort-heading" type="button">Risk score <svg><use href="#icon-arrow-down"/></svg></button></th><th>Value</th><th>Next action</th><th></th></tr></thead>
+                <tbody id="memberTableBody">
+                  <tr data-status="risk inactive expiring" data-name="nina patel core monthly" data-score="84" data-profile>
+                    <td><label class="checkbox"><input class="row-checkbox" type="checkbox"><span><svg><use href="#icon-check"/></svg></span></label></td><td><div class="table-member"><span class="avatar avatar-nina">NP</span><span><strong>Nina Patel</strong><small>nina.patel@email.com</small></span></div></td><td><span class="plan-name">Core Monthly</span></td><td><strong class="last-visit warning">19 days ago</strong><small>Aug 11, 2026</small></td><td><strong>Sep 3, 2026</strong><small class="danger-text">In 4 days</small></td><td><span class="risk-pill high"><i></i>84 High</span></td><td><strong>$59</strong><small>/ month</small></td><td><button class="table-action" data-action="remind" type="button"><svg><use href="#icon-message"/></svg>Send reminder</button></td><td><button class="row-menu" type="button" aria-label="More options"><svg><use href="#icon-dots"/></svg></button></td>
+                  </tr>
+                  <tr data-status="risk inactive overdue" data-name="marcus lee unlimited" data-score="78">
+                    <td><label class="checkbox"><input class="row-checkbox" type="checkbox"><span><svg><use href="#icon-check"/></svg></span></label></td><td><div class="table-member"><span class="avatar avatar-marcus">ML</span><span><strong>Marcus Lee</strong><small>marcus.lee@email.com</small></span></div></td><td><span class="plan-name">Unlimited</span></td><td><strong class="last-visit warning">12 days ago</strong><small>Aug 18, 2026</small></td><td><strong>Aug 28, 2026</strong><small class="danger-text">2 days overdue</small></td><td><span class="risk-pill high"><i></i>78 High</span></td><td><strong>$89</strong><small>/ month</small></td><td><button class="table-action" data-action="remind" type="button"><svg><use href="#icon-card"/></svg>Recover payment</button></td><td><button class="row-menu" type="button" aria-label="More options"><svg><use href="#icon-dots"/></svg></button></td>
+                  </tr>
+                  <tr data-status="expiring" data-name="sofia reed annual plus" data-score="61">
+                    <td><label class="checkbox"><input class="row-checkbox" type="checkbox"><span><svg><use href="#icon-check"/></svg></span></label></td><td><div class="table-member"><span class="avatar avatar-sofia">SR</span><span><strong>Sofia Reed</strong><small>sofia.reed@email.com</small></span></div></td><td><span class="plan-name">Annual Plus</span></td><td><strong>8 days ago</strong><small>Aug 22, 2026</small></td><td><strong>Sep 12, 2026</strong><small class="amber-text">In 13 days</small></td><td><span class="risk-pill medium"><i></i>61 Medium</span></td><td><strong>$799</strong><small>/ year</small></td><td><button class="table-action" data-action="remind" type="button"><svg><use href="#icon-link"/></svg>Send renewal link</button></td><td><button class="row-menu" type="button" aria-label="More options"><svg><use href="#icon-dots"/></svg></button></td>
+                  </tr>
+                  <tr data-status="expiring" data-name="daniel kim flex 12" data-score="48">
+                    <td><label class="checkbox"><input class="row-checkbox" type="checkbox"><span><svg><use href="#icon-check"/></svg></span></label></td><td><div class="table-member"><span class="avatar avatar-daniel">DK</span><span><strong>Daniel Kim</strong><small>daniel.kim@email.com</small></span></div></td><td><span class="plan-name">Flex 12</span></td><td><strong>2 days ago</strong><small>Aug 28, 2026</small></td><td><strong>Sep 9, 2026</strong><small class="amber-text">In 10 days</small></td><td><span class="risk-pill medium"><i></i>48 Medium</span></td><td><strong>$69</strong><small>/ month</small></td><td><button class="table-action" data-action="remind" type="button"><svg><use href="#icon-link"/></svg>Send renewal link</button></td><td><button class="row-menu" type="button" aria-label="More options"><svg><use href="#icon-dots"/></svg></button></td>
+                  </tr>
+                  <tr data-status="active" data-name="olivia bennett unlimited" data-score="16">
+                    <td><label class="checkbox"><input class="row-checkbox" type="checkbox"><span><svg><use href="#icon-check"/></svg></span></label></td><td><div class="table-member"><span class="avatar avatar-olivia">OB</span><span><strong>Olivia Bennett</strong><small>olivia.b@email.com</small></span></div></td><td><span class="plan-name">Unlimited</span></td><td><strong>Today</strong><small>7:42 AM</small></td><td><strong>Nov 18, 2026</strong><small>In 80 days</small></td><td><span class="risk-pill low"><i></i>16 Low</span></td><td><strong>$89</strong><small>/ month</small></td><td><span class="healthy-label"><svg><use href="#icon-check"/></svg>All good</span></td><td><button class="row-menu" type="button" aria-label="More options"><svg><use href="#icon-dots"/></svg></button></td>
+                  </tr>
+                  <tr data-status="inactive" data-name="ethan cole core monthly" data-score="42">
+                    <td><label class="checkbox"><input class="row-checkbox" type="checkbox"><span><svg><use href="#icon-check"/></svg></span></label></td><td><div class="table-member"><span class="avatar avatar-ethan">EC</span><span><strong>Ethan Cole</strong><small>ethan.cole@email.com</small></span></div></td><td><span class="plan-name">Core Monthly</span></td><td><strong class="last-visit warning">15 days ago</strong><small>Aug 15, 2026</small></td><td><strong>Oct 2, 2026</strong><small>In 33 days</small></td><td><span class="risk-pill medium"><i></i>42 Medium</span></td><td><strong>$59</strong><small>/ month</small></td><td><button class="table-action" data-action="remind" type="button"><svg><use href="#icon-message"/></svg>Check in</button></td><td><button class="row-menu" type="button" aria-label="More options"><svg><use href="#icon-dots"/></svg></button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="empty-state" id="memberEmpty"><span><svg><use href="#icon-search"/></svg></span><h3>No members found</h3><p>Try a different name or change your filters.</p></div>
+            </div>
+            <div class="table-footer"><p>Showing <strong id="visibleRows">6</strong> of <strong>1,284</strong> members</p><div class="pagination"><button disabled type="button"><svg><use href="#icon-arrow-left"/></svg></button><button class="active" type="button">1</button><button type="button">2</button><button type="button">3</button><span>…</span><button type="button">214</button><button type="button"><svg class="flip"><use href="#icon-arrow-left"/></svg></button></div></div>
+          </article>
+        </section>
+
+        <!-- SCREEN 3: MEMBER 360 & RENEWAL -->
+        <section class="app-view" id="profile-view" data-screen="profile">
+          <button class="back-link" data-view-link="members" type="button"><svg><use href="#icon-arrow-left"/></svg>Back to members</button>
+          <div class="profile-hero">
+            <div class="profile-identity"><span class="avatar avatar-nina profile-avatar">NP</span><div><span class="profile-status"><i></i>Active member</span><h1>Nina Patel</h1><p>nina.patel@email.com <span>•</span> +1 (415) 555-0142</p></div></div>
+            <div class="profile-actions"><button class="icon-text-button" data-action="call" type="button"><svg><use href="#icon-phone"/></svg>Call</button><button class="icon-text-button" data-action="whatsapp" type="button"><svg><use href="#icon-whatsapp"/></svg>WhatsApp</button><button class="icon-text-button" data-action="email" type="button"><svg><use href="#icon-mail"/></svg>Email</button><button class="button button-primary" id="openRenewal" type="button"><svg><use href="#icon-link"/></svg>Create renewal link</button></div>
+          </div>
+
+          <div class="profile-facts">
+            <div><small>Current plan</small><strong>Core Monthly</strong></div><div><small>Membership ends</small><strong>Sep 3, 2026 <span class="fact-alert">4 days</span></strong></div><div><small>Member since</small><strong>Jan 14, 2025</strong></div><div><small>Lifetime value</small><strong>$1,121</strong></div><div><small>Last visit</small><strong>Aug 11 <span class="fact-alert">19 days</span></strong></div>
+          </div>
+
+          <div class="profile-layout">
+            <div class="profile-main-column">
+              <article class="panel risk-analysis-panel">
+                <div class="panel-heading"><div><h2>Retention risk</h2><p>Updated today at 8:15 AM</p></div><span class="accuracy-badge"><svg><use href="#icon-spark"/></svg>87% confidence</span></div>
+                <div class="risk-analysis-body">
+                  <div class="risk-score-wrap"><div class="risk-score-ring"><span><strong>84</strong><small>/100</small></span></div><span class="risk-level"><i></i>High risk</span><p>Action recommended<br>within <strong>24 hours</strong></p></div>
+                  <div class="risk-drivers">
+                    <h3>What changed</h3>
+                    <div class="risk-driver"><span class="driver-icon red"><svg><use href="#icon-clock"/></svg></span><span><strong>No visit in 19 days</strong><small>Usually visits 3–4 times per week</small></span><b>+32</b></div>
+                    <div class="risk-driver"><span class="driver-icon amber"><svg><use href="#icon-chart"/></svg></span><span><strong>Attendance down 72%</strong><small>Compared with her 12-week average</small></span><b>+28</b></div>
+                    <div class="risk-driver"><span class="driver-icon blue"><svg><use href="#icon-calendar"/></svg></span><span><strong>Membership expires in 4 days</strong><small>No renewal link created yet</small></span><b>+24</b></div>
+                  </div>
+                </div>
+                <div class="recommendation-bar"><span><svg><use href="#icon-spark"/></svg></span><p><strong>Recommended next step</strong><small>Send a personal WhatsApp check-in with a renewal link. Members like Nina are 2.3× more likely to renew after a personal message.</small></p><button id="useRecommendation" type="button">Use recommendation</button></div>
+              </article>
+
+              <article class="panel attendance-panel">
+                <div class="panel-heading"><div><h2>Attendance pattern</h2><p>Check-ins over the last 12 weeks</p></div><div class="attendance-stats"><span><small>12-week avg.</small><strong>8.2 visits</strong></span><span><small>This month</small><strong class="down-value">3 visits <b>↓72%</b></strong></span></div></div>
+                <div class="bar-chart">
+                  <div class="bar-y"><span>12</span><span>8</span><span>4</span><span>0</span></div>
+                  <div class="bars">
+                    <div style="--bar: 75%"><span>9</span><i></i><small>Jun 8</small></div><div style="--bar: 91%"><span>11</span><i></i><small></small></div><div style="--bar: 83%"><span>10</span><i></i><small>Jun 22</small></div><div style="--bar: 100%"><span>12</span><i></i><small></small></div><div style="--bar: 75%"><span>9</span><i></i><small>Jul 6</small></div><div style="--bar: 66%"><span>8</span><i></i><small></small></div><div style="--bar: 75%"><span>9</span><i></i><small>Jul 20</small></div><div style="--bar: 58%"><span>7</span><i></i><small></small></div><div class="decline" style="--bar: 50%"><span>6</span><i></i><small>Aug 3</small></div><div class="decline" style="--bar: 33%"><span>4</span><i></i><small></small></div><div class="decline" style="--bar: 25%"><span>3</span><i></i><small>Aug 17</small></div><div class="current" style="--bar: 25%"><span>3</span><i></i><small>Now</small></div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="panel timeline-panel">
+                <div class="panel-heading"><div><h2>Member activity</h2><p>Messages, visits, payments, and notes</p></div><button class="filter-button" type="button">All activity<svg class="small-chevron"><use href="#icon-arrow-down"/></svg></button></div>
+                <div class="activity-timeline">
+                  <div class="timeline-item"><span class="timeline-icon amber"><svg><use href="#icon-bell"/></svg></span><div><strong>Automated inactivity reminder sent</strong><p>“We haven’t seen you lately — everything okay?”</p><small>Aug 26 · 10:15 AM</small></div><span class="delivery-status">Delivered</span></div>
+                  <div class="timeline-item"><span class="timeline-icon coral"><svg><use href="#icon-calendar"/></svg></span><div><strong>Follow-up was missed</strong><p>Assigned to Jordan Davis</p><small>Aug 21 · 4:00 PM</small></div><button class="text-button" data-action="reschedule" type="button">Reschedule</button></div>
+                  <div class="timeline-item"><span class="timeline-icon green"><svg><use href="#icon-check"/></svg></span><div><strong>Checked in at Downtown</strong><p>Strength floor · 54 minutes</p><small>Aug 11 · 6:32 PM</small></div></div>
+                  <div class="timeline-item"><span class="timeline-icon blue"><svg><use href="#icon-card"/></svg></span><div><strong>Monthly payment collected</strong><p>Visa ending in 4242 · $59.00</p><small>Aug 3 · 8:02 AM</small></div><span class="delivery-status success">Paid</span></div>
+                </div>
+              </article>
+            </div>
+
+            <aside class="profile-side-column">
+              <article class="panel renewal-card">
+                <div class="renewal-card-header"><span class="renewal-icon"><svg><use href="#icon-calendar"/></svg></span><div><h2>Renewal</h2><p>Due in 4 days</p></div><span class="due-pill">Action needed</span></div>
+                <div class="renewal-plan"><small>Current membership</small><div><span><strong>Core Monthly</strong><small>Renews monthly</small></span><b>$59<small>/mo</small></b></div></div>
+                <div class="renewal-dates"><span><small>Current end date</small><strong>Sep 3, 2026</strong></span><svg><use href="#icon-chevron"/></svg><span><small>New end date</small><strong>Oct 3, 2026</strong></span></div>
+                <button class="button button-primary button-full" id="sideRenewalButton" type="button"><svg><use href="#icon-link"/></svg>Create renewal link</button>
+                <button class="renewal-secondary" data-action="change-plan" type="button">Change plan or add an offer</button>
+                <p class="secure-note"><svg><use href="#icon-check"/></svg>No charge until Nina accepts</p>
+              </article>
+
+              <article class="panel contact-card">
+                <div class="panel-heading"><div><h2>Follow-up plan</h2><p>Keep the conversation moving</p></div><button class="row-menu" type="button"><svg><use href="#icon-dots"/></svg></button></div>
+                <div class="next-followup"><span class="calendar-tile"><strong>31</strong><small>AUG</small></span><div><small>Next follow-up</small><strong>Tomorrow at 10:30 AM</strong><p>WhatsApp · Jordan Davis</p></div></div>
+                <div class="contact-buttons"><button data-action="contacted" type="button"><svg><use href="#icon-check"/></svg>Mark contacted</button><button data-action="reschedule" type="button"><svg><use href="#icon-clock"/></svg>Reschedule</button></div>
+              </article>
+
+              <article class="panel notes-card">
+                <div class="panel-heading"><div><h2>Coach notes</h2></div><button class="text-button" data-action="add-note" type="button"><svg><use href="#icon-plus"/></svg>Add note</button></div>
+                <blockquote>“Training for her first 10K. Prefers evening strength sessions and responds best on WhatsApp.”</blockquote>
+                <div class="note-author"><span class="avatar avatar-jordan">JD</span><span><strong>Jordan Davis</strong><small>Added Aug 6, 2026</small></span></div>
+              </article>
+            </aside>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <aside class="drawer" id="messageDrawer" aria-hidden="true" aria-labelledby="drawerTitle">
+    <div class="drawer-header"><div><span class="drawer-label">QUICK FOLLOW-UP</span><h2 id="drawerTitle">Message Nina</h2></div><button class="icon-button drawer-close" type="button" aria-label="Close"><svg><use href="#icon-x"/></svg></button></div>
+    <div class="drawer-member"><span class="avatar avatar-nina">NP</span><span><strong>Nina Patel</strong><small>High risk · Membership ends in 4 days</small></span></div>
+    <div class="channel-tabs"><button class="active" data-channel="whatsapp" type="button"><svg><use href="#icon-whatsapp"/></svg>WhatsApp</button><button data-channel="sms" type="button"><svg><use href="#icon-message"/></svg>SMS</button><button data-channel="email" type="button"><svg><use href="#icon-mail"/></svg>Email</button></div>
+    <label class="field-label" for="messageTemplate">Template</label>
+    <select id="messageTemplate"><option value="personal">Personal check-in + renewal</option><option value="renewal">Membership renewal reminder</option><option value="inactive">We miss you check-in</option></select>
+    <label class="field-label" for="messageBody">Message</label>
+    <div class="message-compose"><textarea id="messageBody" rows="8">Hi Nina, it’s Jordan from Apex Fitness 👋 We haven’t seen you for a little while and wanted to check that everything’s okay. Your membership is also due on Sep 3 — I’ve included a quick renewal link below so you can keep your current rate. Let me know if I can help with anything!</textarea><div class="compose-footer"><button type="button"><svg><use href="#icon-spark"/></svg>Improve</button><span id="charCount">278 characters</span></div></div>
+    <div class="message-preview"><span><svg><use href="#icon-link"/></svg></span><div><strong>Renewal link attached</strong><small>Core Monthly · $59/month</small></div><button type="button">Remove</button></div>
+    <div class="drawer-footer"><button class="button button-secondary drawer-close" type="button">Cancel</button><button class="button button-primary" id="sendMessage" type="button"><svg><use href="#icon-whatsapp"/></svg>Send WhatsApp</button></div>
+  </aside>
+
+  <div class="modal-overlay" id="modalOverlay"></div>
+
+  <div class="modal renewal-modal" id="renewalModal" role="dialog" aria-modal="true" aria-labelledby="renewalTitle" aria-hidden="true">
+    <div class="modal-header"><div><span class="modal-icon"><svg><use href="#icon-link"/></svg></span><div><span class="drawer-label">MEMBERSHIP RENEWAL</span><h2 id="renewalTitle">Create Nina’s renewal link</h2></div></div><button class="icon-button modal-close" type="button"><svg><use href="#icon-x"/></svg></button></div>
+    <div class="modal-body">
+      <div class="renewal-member-summary"><span class="avatar avatar-nina">NP</span><span><strong>Nina Patel</strong><small>Current membership ends Sep 3, 2026</small></span><span class="risk-pill high"><i></i>84 High risk</span></div>
+      <div class="renewal-form-grid">
+        <label><span>Membership plan</span><select><option>Core Monthly — $59/month</option><option>Unlimited — $89/month</option><option>Annual Plus — $799/year</option></select></label>
+        <label><span>New start date</span><input type="text" value="Sep 4, 2026"></label>
+      </div>
+      <label class="offer-toggle"><span><strong>Add a retention offer</strong><small>Optional discount to encourage renewal</small></span><input id="offerToggle" type="checkbox"><i></i></label>
+      <div class="offer-field" id="offerField"><label><span>Offer</span><select><option>10% off first month</option><option>$10 off first month</option><option>One free personal training session</option></select></label></div>
+      <div class="renewal-total"><span><small>Nina pays today</small><strong>$59.00</strong></span><span><small>Then monthly</small><strong>$59.00</strong></span><span><small>New end date</small><strong>Oct 3, 2026</strong></span></div>
+      <div class="link-destination"><span><svg><use href="#icon-whatsapp"/></svg></span><div><strong>Send link via WhatsApp</strong><small>To +1 (415) 555-0142</small></div><button type="button">Change</button></div>
+    </div>
+    <div class="modal-footer"><button class="button button-secondary modal-close" type="button">Cancel</button><button class="button button-primary" id="createLink" type="button"><svg><use href="#icon-link"/></svg>Create & send link</button></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span><svg><use href="#icon-check"/></svg></span><div><strong id="toastTitle">Done</strong><p id="toastMessage">Your action was completed.</p></div><button id="toastClose" type="button"><svg><use href="#icon-x"/></svg></button></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
